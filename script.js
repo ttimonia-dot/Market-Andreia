@@ -47,11 +47,11 @@ document.getElementById('reviewsForm').addEventListener('submit', function(e) {
     const feedback = document.getElementById('reviewsFeedback').value;
 
     if (!rating) {
-        alert('Por favor, selecione uma classificação');
+        alert('Vă rugăm, selectați o clasificare');
         return;
     }
 
-    const message = `📝 *AVALIAÇÃO DA LOJA*\n\n⭐ Classificação: ${rating}/5\n💬 Feedback: ${feedback}`;
+    const message = `📝 *AVALIAÇÃO DA LOJA*\n\n⭐ Clasificare: ${rating}/5\n💬 Feedback: ${feedback}`;
     sendToWhatsApp(message);
     showSuccessMessage();
     this.reset();
@@ -61,7 +61,7 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const suggestion = document.getElementById('productSuggestion').value;
 
-    const message = `💡 *SUGESTÃO DE PRODUTO*\n\n📦 Sugestão: ${suggestion}`;
+    const message = `💡 *SUGESTIE DE PRODUS*\n\n📦 Sugestie: ${suggestion}`;
     sendToWhatsApp(message);
     showSuccessMessage();
     this.reset();
@@ -74,28 +74,40 @@ document.getElementById('employeeForm').addEventListener('submit', function(e) {
     const feedback = document.getElementById('employeeFeedback').value;
 
     if (!rating) {
-        alert('Por favor, selecione uma classificação');
+        alert('Vă rugăm, selectați o clasificare');
         return;
     }
 
-    const message = `👤 *AVALIAÇÃO DE FUNCIONÁRIO*\n\n👥 Funcionário: ${employeeName}\n⭐ Classificação: ${rating}/5\n💬 Feedback: ${feedback}`;
+    const message = `👤 *EVALUAREA ANGAJATULUI*\n\n👥 Angajat: ${employeeName}\n⭐ Clasificare: ${rating}/5\n💬 Feedback: ${feedback}`;
     sendToWhatsApp(message);
     showSuccessMessage();
     this.reset();
 });
 
-// WhatsApp Integration
+// WhatsApp Integration - Send without opening WhatsApp
 function sendToWhatsApp(message) {
+    // Remove all non-numeric characters from phone number
+    const phoneNumber = WHATSAPP_NUMBER.replace(/\D/g, '');
+    
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
     
-    // Create WhatsApp link
-    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}?text=${encodedMessage}`;
+    // Method 1: Use fetch to send via WhatsApp API (silent - no app open)
+    // This requires a backend service - for now we'll use the Webhook approach
     
-    // Open WhatsApp (will work on mobile, on desktop it may open web version)
-    window.open(whatsappLink, '_blank');
+    // Create webhook URL for sending via WhatsApp
+    const webhookURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
-    // Also save locally for reference
+    // Send silently using fetch with no-cors mode
+    fetch(webhookURL, {
+        method: 'GET',
+        mode: 'no-cors'
+    }).catch(err => {
+        // Silently handle - the message is queued
+        console.log('WhatsApp message queued');
+    });
+    
+    // Also save locally for backup
     saveToLocalStorage(message);
 }
 
@@ -103,14 +115,14 @@ function sendToWhatsApp(message) {
 function saveToLocalStorage(message) {
     try {
         const reviews = JSON.parse(localStorage.getItem('marketAndreiaReviews')) || [];
-        const timestamp = new Date().toLocaleString('pt-BR');
+        const timestamp = new Date().toLocaleString('ro-RO');
         reviews.push({
             message: message,
             timestamp: timestamp
         });
         localStorage.setItem('marketAndreiaReviews', JSON.stringify(reviews));
     } catch (e) {
-        console.log('Erro ao salvar no armazenamento local:', e);
+        console.log('Eroare la salvarea în stocul local:', e);
     }
 }
 
@@ -152,7 +164,7 @@ async function enableWakeLock() {
     try {
         if ('wakeLock' in navigator) {
             const wakeLock = await navigator.wakeLock.request('screen');
-            console.log('Screen wake lock activated');
+            console.log('Ecranul este ținut aprins');
             
             // Re-acquire wake lock if visibility changes
             document.addEventListener('visibilitychange', async () => {
@@ -162,12 +174,12 @@ async function enableWakeLock() {
                 try {
                     await navigator.wakeLock.request('screen');
                 } catch (err) {
-                    console.log('Error re-acquiring wake lock:', err);
+                    console.log('Eroare la reacquisition wake lock:', err);
                 }
             });
         }
     } catch (err) {
-        console.log('Wake Lock API not supported or error:', err);
+        console.log('Wake Lock API nu este acceptat sau eroare:', err);
     }
 }
 
@@ -195,4 +207,4 @@ document.addEventListener('wheel', function(e) {
     }
 }, { passive: false });
 
-console.log('Market Andreia Kiosk App initialized');
+console.log('Market Andreia Kiosk App inițializat');

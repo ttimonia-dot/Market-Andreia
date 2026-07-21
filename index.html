@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Market Andreia - Sistema de Avaliações">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Market Andreia - Reviews</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="screen active">
+        <div class="splash-container">
+            <img src="logo.png" alt="Market Andreia Logo" class="logo" onclick="goToMenu()">
+            <p class="tap-text">Toque no logo para continuar</p>
+        </div>
+    </div>
+
+    <!-- Menu Screen -->
+    <div id="menuScreen" class="screen">
+        <div class="menu-container">
+            <h1>Market Andreia</h1>
+            <p class="menu-subtitle">Escolha uma opção:</p>
+            <div class="buttons-container">
+                <button class="menu-btn reviews-btn" onclick="goToReviews()">
+                    <span class="btn-icon">⭐</span>
+                    <span class="btn-text">Avaliações</span>
+                </button>
+                <button class="menu-btn product-btn" onclick="goToProduct()">
+                    <span class="btn-icon">💡</span>
+                    <span class="btn-text">Sugerir Produto</span>
+                </button>
+                <button class="menu-btn employee-btn" onclick="goToEmployee()">
+                    <span class="btn-icon">👤</span>
+                    <span class="btn-text">Avaliação de Funcionário</span>
+                </button>
+            </div>
+            <button class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+        </div>
+    </div>
+
+    <!-- Reviews Form -->
+    <div id="reviewsScreen" class="screen">
+        <div class="form-container">
+            <h2>Avaliações</h2>
+            <form id="reviewsForm">
+                <div class="form-group">
+                    <label>Classificação:</label>
+                    <div class="rating-container">
+                        <button type="button" class="star" onclick="setRating(1, 'reviews')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(2, 'reviews')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(3, 'reviews')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(4, 'reviews')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(5, 'reviews')">⭐</button>
+                    </div>
+                    <input type="hidden" id="reviewsRating" name="rating" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewsFeedback">Feedback/Comentário:</label>
+                    <textarea id="reviewsFeedback" name="feedback" placeholder="Escreva seu comentário aqui..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Avaliação</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Suggestion Form -->
+    <div id="productScreen" class="screen">
+        <div class="form-container">
+            <h2>Sugerir Produto</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productSuggestion">O que você gostaria que tivéssemos na loja?</label>
+                    <textarea id="productSuggestion" name="suggestion" placeholder="Descreva o produto que gostaria de ver em nossa loja..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Sugestão</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Employee Review Form -->
+    <div id="employeeScreen" class="screen">
+        <div class="form-container">
+            <h2>Avaliação de Funcionário</h2>
+            <form id="employeeForm">
+                <div class="form-group">
+                    <label for="employeeName">Nome do Funcionário:</label>
+                    <input type="text" id="employeeName" name="employeeName" placeholder="Digite o nome do funcionário" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Classificação:</label>
+                    <div class="rating-container">
+                        <button type="button" class="star" onclick="setRating(1, 'employee')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(2, 'employee')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(3, 'employee')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(4, 'employee')">⭐</button>
+                        <button type="button" class="star" onclick="setRating(5, 'employee')">⭐</button>
+                    </div>
+                    <input type="hidden" id="employeeRating" name="rating" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="employeeFeedback">Feedback/Comentário:</label>
+                    <textarea id="employeeFeedback" name="feedback" placeholder="Escreva seu comentário aqui..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Avaliação</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-popup hidden">
+        <div class="success-content">
+            <p>✓ Enviado com sucesso!</p>
+            <p class="success-subtitle">Obrigado pelo seu feedback</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

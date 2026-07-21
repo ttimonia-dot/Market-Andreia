@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Market Andreia - Sistema de Avaliações">
+    <meta name="description" content="Market Andreia - Sistem de Evaluări">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="logo.png">
-    <title>Market Andreia - Reviews</title>
+    <title>Market Andreia - Evaluări</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div id="splashScreen" class="screen active">
         <div class="splash-container">
             <img src="logo.png" alt="Market Andreia Logo" class="logo" onclick="goToMenu()">
-            <p class="tap-text">Toque no logo para continuar</p>
+            <p class="tap-text">Atingeți logourile pentru a continua</p>
         </div>
     </div>
 
@@ -23,32 +23,32 @@
     <div id="menuScreen" class="screen">
         <div class="menu-container">
             <h1>Market Andreia</h1>
-            <p class="menu-subtitle">Escolha uma opção:</p>
+            <p class="menu-subtitle">Alegeți o opțiune:</p>
             <div class="buttons-container">
                 <button class="menu-btn reviews-btn" onclick="goToReviews()">
                     <span class="btn-icon">⭐</span>
-                    <span class="btn-text">Avaliações</span>
+                    <span class="btn-text">Evaluări</span>
                 </button>
                 <button class="menu-btn product-btn" onclick="goToProduct()">
                     <span class="btn-icon">💡</span>
-                    <span class="btn-text">Sugerir Produto</span>
+                    <span class="btn-text">Sugerează Produs</span>
                 </button>
                 <button class="menu-btn employee-btn" onclick="goToEmployee()">
                     <span class="btn-icon">👤</span>
-                    <span class="btn-text">Avaliação de Funcionário</span>
+                    <span class="btn-text">Evaluarea Angajatului</span>
                 </button>
             </div>
-            <button class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+            <button class="back-btn" onclick="goToMenu()">← Înapoi la Meniu</button>
         </div>
     </div>
 
     <!-- Reviews Form -->
     <div id="reviewsScreen" class="screen">
         <div class="form-container">
-            <h2>Avaliações</h2>
+            <h2>Evaluări</h2>
             <form id="reviewsForm">
                 <div class="form-group">
-                    <label>Classificação:</label>
+                    <label>Clasificare:</label>
                     <div class="rating-container">
                         <button type="button" class="star" onclick="setRating(1, 'reviews')">⭐</button>
                         <button type="button" class="star" onclick="setRating(2, 'reviews')">⭐</button>
@@ -60,12 +60,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="reviewsFeedback">Feedback/Comentário:</label>
-                    <textarea id="reviewsFeedback" name="feedback" placeholder="Escreva seu comentário aqui..." required></textarea>
+                    <label for="reviewsFeedback">Feedback/Comentariu:</label>
+                    <textarea id="reviewsFeedback" name="feedback" placeholder="Scrieți comentariul dvs. aici..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Enviar Avaliação</button>
-                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+                <button type="submit" class="submit-btn">Trimitere Evaluare</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Înapoi la Meniu</button>
             </form>
         </div>
     </div>
@@ -73,15 +73,15 @@
     <!-- Product Suggestion Form -->
     <div id="productScreen" class="screen">
         <div class="form-container">
-            <h2>Sugerir Produto</h2>
+            <h2>Sugerează Produs</h2>
             <form id="productForm">
                 <div class="form-group">
-                    <label for="productSuggestion">O que você gostaria que tivéssemos na loja?</label>
-                    <textarea id="productSuggestion" name="suggestion" placeholder="Descreva o produto que gostaria de ver em nossa loja..." required></textarea>
+                    <label for="productSuggestion">Ce ați dori să avem în magazin?</label>
+                    <textarea id="productSuggestion" name="suggestion" placeholder="Descrieți produsul pe care ați dori să-l vedeți în magazinul nostru..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Enviar Sugestão</button>
-                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+                <button type="submit" class="submit-btn">Trimitere Sugestie</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Înapoi la Meniu</button>
             </form>
         </div>
     </div>
@@ -89,15 +89,15 @@
     <!-- Employee Review Form -->
     <div id="employeeScreen" class="screen">
         <div class="form-container">
-            <h2>Avaliação de Funcionário</h2>
+            <h2>Evaluarea Angajatului</h2>
             <form id="employeeForm">
                 <div class="form-group">
-                    <label for="employeeName">Nome do Funcionário:</label>
-                    <input type="text" id="employeeName" name="employeeName" placeholder="Digite o nome do funcionário" required>
+                    <label for="employeeName">Numele Angajatului:</label>
+                    <input type="text" id="employeeName" name="employeeName" placeholder="Introduceți numele angajatului" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Classificação:</label>
+                    <label>Clasificare:</label>
                     <div class="rating-container">
                         <button type="button" class="star" onclick="setRating(1, 'employee')">⭐</button>
                         <button type="button" class="star" onclick="setRating(2, 'employee')">⭐</button>
@@ -109,12 +109,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="employeeFeedback">Feedback/Comentário:</label>
-                    <textarea id="employeeFeedback" name="feedback" placeholder="Escreva seu comentário aqui..." required></textarea>
+                    <label for="employeeFeedback">Feedback/Comentariu:</label>
+                    <textarea id="employeeFeedback" name="feedback" placeholder="Scrieți comentariul dvs. aici..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Enviar Avaliação</button>
-                <button type="button" class="back-btn" onclick="goToMenu()">← Voltar ao Menu</button>
+                <button type="submit" class="submit-btn">Trimitere Evaluare</button>
+                <button type="button" class="back-btn" onclick="goToMenu()">← Înapoi la Meniu</button>
             </form>
         </div>
     </div>
@@ -122,8 +122,8 @@
     <!-- Success Message -->
     <div id="successMessage" class="success-popup hidden">
         <div class="success-content">
-            <p>✓ Enviado com sucesso!</p>
-            <p class="success-subtitle">Obrigado pelo seu feedback</p>
+            <p>✓ Trimis cu succes!</p>
+            <p class="success-subtitle">Mulțumim pentru feedback-ul dvs.</p>
         </div>
     </div>
 

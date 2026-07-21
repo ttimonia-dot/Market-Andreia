@@ -1,7 +1,7 @@
 {
-  "name": "Market Andreia Review Kiosk",
+  "name": "Market Andreia - Chiosc de Evaluări",
   "short_name": "Market Andreia",
-  "description": "Review kiosk app for Market Andreia customers",
+  "description": "Aplicație chiosc de evaluări pentru clienții Market Andreia",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
